@@ -35,4 +35,3 @@ test('Do not display:No items to display, when: to do list is not empty', () => 
 
   expect(screen.queryByText('No items to display')).toBeFalsy();
 });
-

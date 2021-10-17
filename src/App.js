@@ -8,7 +8,14 @@ function App(props) {
     <div className='noItemsMessage'>No items to display</div>
   );
 
-  return hasListItems ? <ToDoList listItems={listItems} /> : showNoItemsMessage;
+  return (
+    <div>
+      <input type='text' data-testid='add-new-todo' />
+      <div>
+        {hasListItems ? <ToDoList listItems={listItems} /> : showNoItemsMessage}
+      </div>
+    </div>
+  );
 }
 
 export default App;
