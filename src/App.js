@@ -9,9 +9,11 @@ function App(props) {
   );
 
   return (
-    <div>
-      <input type='text' data-testid='add-new-todo' />
-      <div>
+    <div className='app'>
+      <div className='addNewTodoArea'>
+        <input type='text' data-testid='add-new-todo' />
+      </div>
+      <div className=''>
         {hasListItems ? <ToDoList listItems={listItems} /> : showNoItemsMessage}
       </div>
     </div>
