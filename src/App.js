@@ -1,25 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
+import ToDoList from './todo/ToDoList';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+function App(props) {
+  const { listItems } = props;
+  const hasListItems = listItems && listItems.length > 0;
+  const showNoItemsMessage = (
+    <div className='noItemsMessage'>No items to display</div>
   );
+
+  return hasListItems ? <ToDoList listItems={listItems} /> : showNoItemsMessage;
 }
 
 export default App;
