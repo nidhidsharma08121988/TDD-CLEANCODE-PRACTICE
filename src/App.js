@@ -1,3 +1,4 @@
+import AddNewTodo from './todo/AddNewTodo';
 import './App.css';
 import ToDoList from './todo/ToDoList';
 
@@ -10,10 +11,11 @@ function App(props) {
 
   return (
     <div className='app'>
+      <div className='titleAndNavigation'>To Do App</div>
       <div className='addNewTodoArea'>
-        <input type='text' data-testid='add-new-todo' />
+        <AddNewTodo />
       </div>
-      <div className=''>
+      <div className='displayTodoArea'>
         {hasListItems ? <ToDoList listItems={listItems} /> : showNoItemsMessage}
       </div>
     </div>

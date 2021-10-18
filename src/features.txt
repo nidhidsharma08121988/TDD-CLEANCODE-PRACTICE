@@ -1,5 +1,5 @@
 Todo app must be able to list all the to do items **done
 If there are no to do items then todo app must indicate so **done
-Todo app must be allow user to add new to do items
+Todo app must be allow user to add new to do items **done
 Once the user enters new todo item, it must be displayed among todo items
 User must be able to toggle the item between completed and pending
