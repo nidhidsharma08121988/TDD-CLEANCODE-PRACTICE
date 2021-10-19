@@ -8,7 +8,7 @@ const ToDoList = props => {
     <div className={styles.listOfItems}>
       <ul>
         {listItems.map((item, index) => (
-          <li key={index}>
+          <li key={index} data-testid='todoItem'>
             <ToDoItem item={item} />
           </li>
         ))}
