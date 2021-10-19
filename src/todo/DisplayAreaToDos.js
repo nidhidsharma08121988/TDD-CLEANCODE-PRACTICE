@@ -20,7 +20,9 @@ const DisplayAreaToDos = props => {
 
   const hasListItems = todoList && todoList.length > 0;
   const showNoItemsMessage = (
-    <div className={styles.noItemsMessage}>No items to display</div>
+    <div className={styles.noItemsMessage} data-testid='noList'>
+      No items to display
+    </div>
   );
 
   return (
