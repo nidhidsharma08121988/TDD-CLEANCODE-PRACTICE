@@ -2,7 +2,6 @@ import { cleanup, render, screen, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import App from '../App';
 import rootReducer from '../redux-store/reducers';
 import DisplayAreaToDos from '../todo/DisplayAreaToDos';
 
@@ -25,46 +24,34 @@ beforeAll(() => {
     return {
       getTodoListApi: jest
         .fn()
+        .mockResolvedValueOnce(emptyList)
         .mockResolvedValue(withSingleObject)
-        .mockResolvedValueOnce(emptyList),
+        .mockResolvedValue(withSingleObject),
     };
   });
 });
 
-test('Display: Title of the app', () => {
-  render(<App />);
-  expect(screen.queryByText('To Do App')).toBeVisible();
-});
-
-test('Display: No items to display, when: To Do list is empty', async () => {
+beforeEach(() => {
   render(
     <Provider store={createStore(rootReducer, {}, applyMiddleware(thunk))}>
       <DisplayAreaToDos />
     </Provider>
   );
+});
 
+test('Display: No items to display, when: To Do list is empty', async () => {
   await waitFor(() => {
     expect(screen.queryByTestId('noList')).toBeVisible();
   });
 });
 
 test('Display: All To do items, when: To do list is not empty', async () => {
-  render(
-    <Provider store={createStore(rootReducer, {}, applyMiddleware(thunk))}>
-      <DisplayAreaToDos />
-    </Provider>
-  );
   await waitFor(() => {
     expect(screen.queryAllByTestId('todoItem').length).toBe(1);
   });
 });
 
 test('Do not display:No items to display, when: to do list is not empty', async () => {
-  render(
-    <Provider store={createStore(rootReducer, {}, applyMiddleware(thunk))}>
-      <DisplayAreaToDos />
-    </Provider>
-  );
   await waitFor(() => {
     expect(screen.queryByTestId('noList')).toBeFalsy();
   });
