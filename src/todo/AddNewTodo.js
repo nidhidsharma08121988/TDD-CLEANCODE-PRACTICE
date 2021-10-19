@@ -1,7 +1,11 @@
-import classes from './AddNewTodo.module.css';
+import styles from './AddNewTodo.module.css';
 
 const AddNewTodo = () => {
-  return <textarea type='text' data-testid='add-new-todo' />;
+  return (
+    <div className={styles.addNewTodoArea}>
+      <textarea type='text' data-testid='add-new-todo' />
+    </div>
+  );
 };
 
 export default AddNewTodo;

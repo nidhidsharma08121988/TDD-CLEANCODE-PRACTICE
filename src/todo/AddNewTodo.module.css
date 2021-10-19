@@ -1,6 +1,15 @@
-textarea {
+.addNewTodoArea textarea {
   width: 100%;
   height: 80%;
   resize: none;
   overflow: auto;
+}
+
+.addNewTodoArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: top;
+  width: 100%;
+  height: 20%;
 }

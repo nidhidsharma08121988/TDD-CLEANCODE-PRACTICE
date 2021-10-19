@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import App from '../App';
+import DisplayAreaToDos from '../todo/DisplayAreaToDos';
 
 test('Display: Title of the app', () => {
   render(<App />);
@@ -7,8 +8,7 @@ test('Display: Title of the app', () => {
 });
 
 test('Display: No items to display, when: To Do list is empty', () => {
-  const listItems = [];
-  render(<App listItems={listItems} />);
+  render(<DisplayAreaToDos />);
 
   expect(screen.queryByText('No items to display')).toBeTruthy();
 });
@@ -22,7 +22,7 @@ test('Display: All To do items, when: To do list is not empty', () => {
       completed: false,
     },
   ];
-  render(<App listItems={listItems} />);
+  render(<DisplayAreaToDos listItems={listItems} />);
 
   expect(screen.queryByText('delectus aut autem')).toBeVisible();
 });
@@ -36,7 +36,7 @@ test('Do not display:No items to display, when: to do list is not empty', () => 
       completed: false,
     },
   ];
-  render(<App listItems={listItems} />);
+  render(<DisplayAreaToDos listItems={listItems} />);
 
   expect(screen.queryByText('No items to display')).toBeFalsy();
 });
