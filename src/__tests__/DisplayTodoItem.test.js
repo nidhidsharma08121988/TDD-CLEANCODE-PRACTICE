@@ -1,17 +1,13 @@
-import { cleanup, render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from '../redux-store/reducers';
 import DisplayAreaToDos from '../todo/DisplayAreaToDos';
 
-afterEach(() => {
-  cleanup();
-  jest.resetAllMocks();
-});
-
-beforeAll(() => {
+beforeEach(() => {
   jest.mock('../network/todo_api_calls', () => {
+    console.log('I am mocking');
     const emptyList = [];
     const withSingleObject = [
       {
@@ -24,19 +20,21 @@ beforeAll(() => {
     return {
       getTodoListApi: jest
         .fn()
-        .mockResolvedValueOnce(emptyList)
-        .mockResolvedValue(withSingleObject)
-        .mockResolvedValue(withSingleObject),
+        .mockReturnValueOnce(emptyList)
+        .mockReturnValueOnce(withSingleObject)
+        .mockReturnValueOnce(withSingleObject),
     };
   });
-});
 
-beforeEach(() => {
   render(
     <Provider store={createStore(rootReducer, {}, applyMiddleware(thunk))}>
       <DisplayAreaToDos />
     </Provider>
   );
+});
+
+afterAll(() => {
+  jest.clearAllMocks();
 });
 
 test('Display: No items to display, when: To Do list is empty', async () => {
