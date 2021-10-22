@@ -1,10 +1,21 @@
 import { screen, render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { applyMiddleware, createStore } from 'redux';
 import App from '../App';
+import rootReducer from '../redux-store/reducers';
+import thunk from 'redux-thunk';
+import { Provider } from 'react-redux';
+import * as todoActions from '../redux-store/actions/todoActions';
 
 describe('Add new todo Item:', () => {
   beforeEach(() => {
-    render(<App />);
+    const initState = {};
+    const store = createStore(rootReducer, initState, applyMiddleware(thunk));
+    render(
+      <Provider store={store}>
+        <App />
+      </Provider>
+    );
   });
 
   test('Must display: Textarea to enter new todo item', () => {
@@ -28,13 +39,13 @@ describe('Add new todo Item:', () => {
 
   test('On Submit: Must add the to do item to the list', async () => {
     const textarea = screen.queryByTestId('input-new-todo');
-    userEvent.type(textarea, 'Hello');
+    userEvent.type(textarea, 'Bye');
     const submitBtn = screen.queryByTestId('submit-new-todo');
     submitBtn.click();
 
     const arrayOfTodoItems = screen.queryAllByTestId('todo-item');
     await waitFor(() => {
-      expect(arrayOfTodoItems[0]).toContain('Hello');
+      expect(arrayOfTodoItems).toContainEqual('Bye');
     });
   });
 });

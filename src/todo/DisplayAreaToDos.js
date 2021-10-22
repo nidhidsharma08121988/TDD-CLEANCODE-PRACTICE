@@ -18,12 +18,13 @@ const DisplayAreaToDos = props => {
     //eslint-disable-next-line
   }, [props.listItems]);
 
-  const hasListItems = todoList && todoList.length > 0;
   const showNoItemsMessage = (
     <div className={styles.noItemsMessage} data-testid='noList'>
       No items to display
     </div>
   );
+
+  const hasListItems = todoList && todoList.length > 0;
 
   return (
     <div className={styles.displayTodoArea} data-testid='display-area-todo'>
@@ -38,6 +39,7 @@ const mapStateToProps = state => ({
 
 DisplayAreaToDos.propTypes = {
   listItems: PropTypes.array.isRequired,
+  getTodoListAction: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, { getTodoListAction })(
