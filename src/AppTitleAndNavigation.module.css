@@ -7,8 +7,9 @@
   width: inherit;
   height: 4rem;
   margin: 0;
-  padding: 0;
+  padding: 0 var(--standard-margin-padding);
   font-size: 2rem;
-  box-shadow: 1px 1px 3px grey;
+  box-shadow: 1px 1px 2px grey;
   position: fixed;
+  overflow: hidden;
 }
