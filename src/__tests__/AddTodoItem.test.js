@@ -5,7 +5,6 @@ import App from '../App';
 import rootReducer from '../redux-store/reducers';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import * as todoActions from '../redux-store/actions/todoActions';
 
 describe('Add new todo Item:', () => {
   beforeEach(() => {
