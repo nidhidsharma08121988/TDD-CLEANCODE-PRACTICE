@@ -1,11 +1,14 @@
 .titleAndNavigation {
   display: flex;
   justify-content: space-between;
+  background-color: white;
+  z-index: 1;
   align-items: center;
-  width: 100%;
+  width: inherit;
   height: 4rem;
   margin: 0;
   padding: 0;
   font-size: 2rem;
   box-shadow: 1px 1px 3px grey;
+  position: fixed;
 }
