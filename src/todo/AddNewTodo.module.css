@@ -13,7 +13,8 @@
   padding: 0.3rem 1rem;
   margin: 0.1rem;
   border-radius: 5px;
-  border-color: lightgray;
+  border: none;
+  background-color: whitesmoke;
   overflow: auto;
   font-size: 1rem;
   outline: none;
