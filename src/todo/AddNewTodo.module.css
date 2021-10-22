@@ -1,15 +1,20 @@
-.addNewTodoArea textarea {
-  width: 100%;
-  height: 80%;
-  resize: none;
-  overflow: auto;
-}
-
 .addNewTodoArea {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: top;
   width: 100%;
-  height: 20%;
+}
+
+.addNewTodoArea textarea {
+  width: 100%;
+  height: 90%;
+  resize: none;
+  padding: 0.3rem 1rem;
+  margin: 0.1rem;
+  border-radius: 5px;
+  border-color: lightgray;
+  overflow: auto;
+  font-size: 1rem;
+  outline: none;
 }

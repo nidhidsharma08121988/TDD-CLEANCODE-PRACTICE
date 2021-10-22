@@ -1,6 +1,13 @@
 title must be displayed **done
 Todo app must be able to list all the to do items **done
+    - if list is empty suggest that no todo items are there in list **done
+    - if list is not empty all list should be displayed ** done
+    - if list is not empty then the message that no to do items are there should not be displayed **done
 If there are no to do items then todo app must indicate so **done
-Todo app must be allow user to add new to do items **done
+Todo app must be allow user to add new to do items
+    - input box
+        - display input box **done
+    - submit (or Add todo) button
 Once the user enters new todo item, it must be displayed among todo items
 User must be able to toggle the item between completed and pending
+Must be able to delete is 
