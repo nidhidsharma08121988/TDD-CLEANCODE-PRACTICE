@@ -43,9 +43,9 @@ describe('Add new todo Item:', () => {
     const submitBtn = screen.queryByTestId('submit-new-todo');
     submitBtn.click();
 
-    const arrayOfTodoItems = screen.queryAllByTestId('todo-item');
     await waitFor(() => {
-      expect(arrayOfTodoItems).toContainEqual('Bye');
+      const arrayOfTodoItems = screen.queryAllByTestId('todo-item');
+      expect(arrayOfTodoItems[0].textContent).toBe('Bye');
     });
   });
 });
