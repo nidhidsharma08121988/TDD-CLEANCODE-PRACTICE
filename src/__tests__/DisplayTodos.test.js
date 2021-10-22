@@ -49,7 +49,7 @@ describe('when: To do list is not empty,', () => {
 
   test('Display: All To do items,', async () => {
     await waitFor(() => {
-      expect(screen.queryAllByTestId('todoItem').length).toBe(
+      expect(screen.queryAllByTestId('todo-item').length).toBe(
         withSingleTodo.length
       );
     });

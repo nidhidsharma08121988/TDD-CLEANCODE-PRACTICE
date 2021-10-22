@@ -15,7 +15,7 @@ describe('Add new todo Item:', () => {
     expect(screen.queryByTestId('submit-new-todo')).toBeVisible();
   });
 
-  test('Must clear textarea on click of the submit button', async () => {
+  test('On Submit: Must clear textarea', async () => {
     const textarea = screen.queryByTestId('input-new-todo');
     userEvent.type(textarea, 'Hello');
     const submitBtn = screen.queryByTestId('submit-new-todo');
@@ -23,6 +23,18 @@ describe('Add new todo Item:', () => {
 
     await waitFor(() => {
       expect(textarea.value).toBe('');
+    });
+  });
+
+  test('On Submit: Must add the to do item to the list', async () => {
+    const textarea = screen.queryByTestId('input-new-todo');
+    userEvent.type(textarea, 'Hello');
+    const submitBtn = screen.queryByTestId('submit-new-todo');
+    submitBtn.click();
+
+    const arrayOfTodoItems = screen.queryAllByTestId('todo-item');
+    await waitFor(() => {
+      expect(arrayOfTodoItems[0]).toContain('Hello');
     });
   });
 });

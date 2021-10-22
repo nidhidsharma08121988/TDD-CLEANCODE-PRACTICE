@@ -3,6 +3,11 @@ import styles from './AddNewTodo.module.css';
 
 const AddNewTodo = () => {
   const [text, setText] = useState('');
+
+  const handleSubmit = () => {
+    setText('');
+  };
+
   const inputTodo = (
     <textarea
       type='text'
@@ -17,7 +22,7 @@ const AddNewTodo = () => {
     <button
       data-testid='submit-new-todo'
       className={styles.submitBtn}
-      onClick={() => setText('')}
+      onClick={handleSubmit}
     >
       <i className='fas fa-plus'></i>
     </button>
