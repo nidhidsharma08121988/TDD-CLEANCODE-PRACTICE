@@ -8,6 +8,7 @@ const AddNewTodo = () => {
         data-testid='input-new-todo'
         placeholder='Task To do...'
       />
+      <button data-testid='submit-new-todo'>Add</button>
     </div>
   );
 };
