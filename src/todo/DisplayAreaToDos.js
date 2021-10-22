@@ -26,7 +26,7 @@ const DisplayAreaToDos = props => {
   );
 
   return (
-    <div className={styles.displayTodoArea}>
+    <div className={styles.displayTodoArea} data-testid='display-area-todo'>
       {hasListItems ? <ToDoList listItems={todoList} /> : showNoItemsMessage}
     </div>
   );
