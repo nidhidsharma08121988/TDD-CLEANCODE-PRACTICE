@@ -13,7 +13,7 @@ Todo app must be allow user to add new to do items
         - on click of submit button 
             - the text in the textarea must be cleared **done
             - the text in the textarea must be added to the displaytodos area **done
+Must display error if error is there in fetching todo list  **done
+Must not display error if no error is there in fetching todo list **done
 User must be able to toggle the item between completed and pending 
 Must be able to delete any todo
-Must display error if error is there in fetching todo list  **done
-Must not display error if no error is there in fetching todo list 

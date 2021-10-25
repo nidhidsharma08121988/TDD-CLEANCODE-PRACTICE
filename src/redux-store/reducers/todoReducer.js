@@ -1,4 +1,9 @@
-import { ADD_TODO, SHOW_ERROR, GET_TODO_LIST } from '../actions/types';
+import {
+  ADD_TODO,
+  SHOW_ERROR,
+  GET_TODO_LIST,
+  TOGGLE_COMPLETED,
+} from '../actions/types';
 
 const intialState = {
   todos: [],

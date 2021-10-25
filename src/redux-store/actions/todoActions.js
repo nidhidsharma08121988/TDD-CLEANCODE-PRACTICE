@@ -1,5 +1,12 @@
 import { getTodoListApi } from '../../network/todo_api_calls';
-import { ADD_TODO, GET_TODO_LIST, HIDE_ERROR, SHOW_ERROR } from './types';
+import { ADD_TODO, GET_TODO_LIST, SHOW_ERROR, TOGGLE_COMPLETED } from './types';
+
+export const toggleCompletedAction = id => dispatch => {
+  dispatch({
+    type: TOGGLE_COMPLETED,
+    payload: id,
+  });
+};
 
 export const addNewTodoAction = todo => dispatch => {
   dispatch({

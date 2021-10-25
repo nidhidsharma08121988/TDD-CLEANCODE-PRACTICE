@@ -1,5 +1,6 @@
 import ToDoItem from './ToDoItem';
 import styles from './ToDoList.module.css';
+import PropTypes from 'prop-types';
 
 const ToDoList = props => {
   const { listItems } = props;
@@ -16,4 +17,9 @@ const ToDoList = props => {
     </div>
   );
 };
+
+ToDoList.propTypes = {
+  listItems: PropTypes.array.isRequired,
+};
+
 export default ToDoList;
