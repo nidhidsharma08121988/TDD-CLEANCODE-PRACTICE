@@ -6,11 +6,13 @@ import { connect } from 'react-redux';
 const ToDoItem = props => {
   const { item, toggleCompletedAction } = props;
 
+  const toggleCompletedState = () => item.id && toggleCompletedAction(item.id);
+
   return (
     <div
       data-testid='todo-text'
       className={item.completed ? styles.completed : styles.todoText}
-      onClick={() => item.id && toggleCompletedAction(item.id)}
+      onClick={toggleCompletedState}
     >
       {item.title}
     </div>
