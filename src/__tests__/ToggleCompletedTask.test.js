@@ -1,15 +1,16 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import * as apiCalls from '../network/todo_api_calls';
 import rootReducer from '../redux-store/reducers';
 import App from '../App';
+import userEvent from '@testing-library/user-event';
 
 const todoList = [
   {
-    postId: 1,
-    user: 1,
+    id: 1,
+    userId: 1,
     title: 'good',
     completed: false,
   },
@@ -21,9 +22,7 @@ describe('Todo item', () => {
     mockGetTodoApi.mockImplementation(() => Promise.resolve(todoList));
 
     const initState = {
-      todos: [],
-      newTodo: {},
-      showListError: false,
+      todo_reducer: { todos: [], newTodo: {}, showListError: false },
     };
 
     const store = createStore(rootReducer, initState, applyMiddleware(thunk));
@@ -36,10 +35,13 @@ describe('Todo item', () => {
   });
 
   test('Must: Toggle state of completed on click', async () => {
+    const taskText = screen.queryByTestId('todo-text');
+    userEvent.click(taskText);
+
     await waitFor(() => {
-      const task = screen.queryByRole('list');
-      task.click();
-      expect(task.querySelector('.completed')).toBeTruthy();
+      expect(screen.queryByText(taskText.innerText).className).toBe(
+        'completed'
+      );
     });
   });
 });

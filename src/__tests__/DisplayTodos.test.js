@@ -8,8 +8,8 @@ import * as apiCalls from '../network/todo_api_calls';
 
 const withSingleTodo = [
   {
-    postId: 1,
-    user: 1,
+    id: 1,
+    userId: 1,
     title: 'good',
     completed: false,
   },
