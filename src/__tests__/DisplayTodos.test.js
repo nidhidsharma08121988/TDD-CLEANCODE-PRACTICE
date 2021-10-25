@@ -60,4 +60,10 @@ describe('when: To do list is not empty,', () => {
       expect(screen.queryByText(withSingleTodo[0].title)).toBeVisible();
     });
   });
+
+  test('Donot Display: Something went wrong', async () => {
+    await waitFor(() => {
+      expect(screen.queryByTestId('display-error')).toBeFalsy();
+    });
+  });
 });
