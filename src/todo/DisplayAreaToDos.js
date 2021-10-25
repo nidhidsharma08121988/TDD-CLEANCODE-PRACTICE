@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { getTodoListAction } from '../redux-store/actions/todoActions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import cloud from './cloud-solid.svg';
 
 const DisplayAreaToDos = props => {
   const [todoList, setTodoList] = useState(props.listItems);
@@ -30,7 +31,8 @@ const DisplayAreaToDos = props => {
 
   const displayErrorMessage = (
     <div data-testid='display-error' className={styles.errorMessage}>
-      Something is wrong
+      <img src={cloud} alt='Network error' />
+      Oops!! Something went wrong
     </div>
   );
 

@@ -6,7 +6,7 @@ import * as apiCalls from '../network/todo_api_calls';
 import rootReducer from '../redux-store/reducers';
 import App from '../App';
 
-describe('When: Could not fetch Todos:', () => {
+describe('When: Error in fetching todos:', () => {
   beforeEach(() => {
     const mockGetTodoListApi = jest.spyOn(apiCalls, 'getTodoListApi');
     mockGetTodoListApi.mockImplementation(() => {
