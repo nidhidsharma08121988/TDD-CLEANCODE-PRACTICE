@@ -1,8 +1,9 @@
-import { ADD_TODO, GET_TODO_LIST } from '../actions/types';
+import { ADD_TODO, SHOW_ERROR, GET_TODO_LIST } from '../actions/types';
 
 const intialState = {
   todos: [],
   newTodo: {},
+  showListError: false,
 };
 
 const todoReducer = (state = intialState, action) => {
@@ -11,11 +12,17 @@ const todoReducer = (state = intialState, action) => {
       return {
         ...state,
         todos: action.payload,
+        showListError: false,
       };
     case ADD_TODO:
       return {
         ...state,
         todos: [action.payload, ...state.todos],
+      };
+    case SHOW_ERROR:
+      return {
+        ...state,
+        showListError: true,
       };
     default:
       return state;

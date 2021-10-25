@@ -26,15 +26,30 @@ const DisplayAreaToDos = props => {
 
   const hasListItems = todoList && todoList.length > 0;
 
+  const thereIsError = props.showListError;
+
+  const displayErrorMessage = (
+    <div data-testid='display-error' className={styles.errorMessage}>
+      Something is wrong
+    </div>
+  );
+
   return (
     <div className={styles.displayTodoArea} data-testid='display-area-todo'>
-      {hasListItems ? <ToDoList listItems={todoList} /> : showNoItemsMessage}
+      {hasListItems ? (
+        <ToDoList listItems={todoList} />
+      ) : thereIsError ? (
+        displayErrorMessage
+      ) : (
+        showNoItemsMessage
+      )}
     </div>
   );
 };
 
 const mapStateToProps = state => ({
   listItems: state.todo_reducer.todos,
+  showListError: state.todo_reducer.showListError,
 });
 
 DisplayAreaToDos.propTypes = {

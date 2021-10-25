@@ -11,7 +11,8 @@ Todo app must be allow user to add new to do items
         - display + icon 
     - Once the user enters new todo item, it must be displayed among todo items 
         - on click of submit button 
-            - the text in the textarea must be cleared
-            - the text in the textarea must be added to the displaytodos area 
-User must be able to toggle the item between completed and pending
+            - the text in the textarea must be cleared **done
+            - the text in the textarea must be added to the displaytodos area **done
+User must be able to toggle the item between completed and pending 
 Must be able to delete any todo
+Must display network error if there is any
