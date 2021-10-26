@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import rootReducer from '../redux-store/reducers';
 import * as apiCalls from '../network/todo_api_calls';
 import App from '../App';
+import userEvent from '@testing-library/user-event';
 
 describe('Todo item', () => {
   beforeEach(() => {
@@ -38,6 +39,9 @@ describe('Todo item', () => {
   });
   test('Could be deleted', async () => {
     await waitFor(() => {
+      const deleteBtn = screen.getByTestId('delete-task-btn');
+      userEvent.click(deleteBtn);
+
       expect(screen.getByText('good')).toBeFalsy();
     });
   });
