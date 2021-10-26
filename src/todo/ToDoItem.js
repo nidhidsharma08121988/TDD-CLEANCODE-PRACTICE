@@ -2,6 +2,7 @@ import styles from './ToDoItem.module.css';
 import PropTypes from 'prop-types';
 import { toggleCompletedAction } from '../redux-store/actions/todoActions';
 import { connect } from 'react-redux';
+import { deleteTodoAction } from '../redux-store/actions/todoActions';
 
 const ToDoItem = props => {
   const { item, toggleCompletedAction } = props;
@@ -22,6 +23,9 @@ const ToDoItem = props => {
 ToDoItem.propTypes = {
   item: PropTypes.object.isRequired,
   toggleCompletedAction: PropTypes.func.isRequired,
+  deleteTodoAction: PropTypes.func.isRequired,
 };
 
-export default connect(null, { toggleCompletedAction })(ToDoItem);
+export default connect(null, { toggleCompletedAction, deleteTodoAction })(
+  ToDoItem
+);
