@@ -3,6 +3,7 @@ import {
   SHOW_ERROR,
   GET_TODO_LIST,
   TOGGLE_COMPLETED,
+  DELETE_TODO,
 } from '../actions/types';
 
 const intialState = {
@@ -38,6 +39,11 @@ const todoReducer = (state = intialState, action) => {
             ? { ...todo, completed: !todo.completed }
             : todo
         ),
+      };
+    case DELETE_TODO:
+      return {
+        ...state,
+        todos: state.todos.filter(todo => todo.id !== action.payload),
       };
     default:
       return state;
