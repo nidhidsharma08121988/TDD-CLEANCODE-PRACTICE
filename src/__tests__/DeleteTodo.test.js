@@ -25,7 +25,6 @@ describe('Todo item', () => {
       todo_reducer: {
         todos: [],
         newTodo: {},
-        completed: false,
         showListError: false,
       },
     };
@@ -45,10 +44,12 @@ describe('Todo item', () => {
 
   test('Is deleted on click of delete button', async () => {
     await waitFor(() => {
-      const deleteBtn = screen.getByTestId('delete-todo-btn');
-      userEvent.click(deleteBtn);
-
-      expect(screen.queryByText('good')).toBeFalsy();
+      const alltextItems = screen.queryAllByTestId('todo-text');
+      alltextItems.forEach(item => {
+        const btn = item.find('[data-testid="delete-todo-btn"]');
+        userEvent.click(btn);
+        expect(screen.queryByText('good')).toBeFalsy();
+      });
     });
   });
 });
