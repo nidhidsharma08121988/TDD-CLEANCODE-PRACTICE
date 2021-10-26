@@ -16,7 +16,13 @@ const ToDoItem = props => {
       onClick={toggleCompletedState}
     >
       <p className={item.completed ? styles.completed : ''}>{item.title}</p>
-      <i className={styles.deleteIcon} >X</i>
+      <button
+        className={styles.deleteBtn}
+        data-testid='delete-todo-btn'
+        onClick={() => item.id && deleteTodoAction(item.id)}
+      >
+        x
+      </button>
     </div>
   );
 };

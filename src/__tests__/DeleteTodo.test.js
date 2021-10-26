@@ -39,7 +39,7 @@ describe('Todo item', () => {
   });
   test('Could be deleted', async () => {
     await waitFor(() => {
-      const deleteBtn = screen.getByTestId('delete-task-btn');
+      const deleteBtn = screen.getByTestId('delete-todo-btn');
       userEvent.click(deleteBtn);
 
       expect(screen.getByText('good')).toBeFalsy();
