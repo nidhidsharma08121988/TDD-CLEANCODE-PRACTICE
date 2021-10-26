@@ -16,4 +16,4 @@ Todo app must be allow user to add new to do items
 Must display error if error is there in fetching todo list  **done
 Must not display error if no error is there in fetching todo list **done
 User must be able to toggle the item between completed and pending **done
-Must be able to delete any todo 
+Must be able to delete any todo **done
