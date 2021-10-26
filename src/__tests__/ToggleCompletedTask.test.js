@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
@@ -35,13 +35,11 @@ describe('Todo item', () => {
   });
 
   test('Must: Toggle state of completed on click', async () => {
-    const taskText = screen.queryByTestId('todo-text');
-    userEvent.click(taskText);
-
     await waitFor(() => {
-      expect(screen.queryByText(taskText.innerText).className).toBe(
-        'completed'
-      );
+      const taskText = screen.getByTestId('todo-text');
+      userEvent.click(taskText);
+
+      expect(taskText.classList.contains('completed')).toBeTruthy();
     });
   });
 });
