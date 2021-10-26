@@ -19,7 +19,7 @@ const todoList = [
 describe('Todo item', () => {
   beforeEach(() => {
     const mockGetTodoApi = jest.spyOn(apiCalls, 'getTodoListApi');
-    mockGetTodoApi.mockImplementationOnce(() => Promise.resolve(todoList));
+    mockGetTodoApi.mockResolvedValueOnce(todoList);
 
     const initState = {
       todo_reducer: { todos: [], newTodo: {}, showListError: false },
@@ -42,8 +42,8 @@ describe('Todo item', () => {
     await waitFor(() => {
       const taskText = screen.getByTestId('todo-text');
       userEvent.click(taskText);
-
-      expect(taskText.classList.contains('completed')).toBeTruthy();
+      const text = taskText.find('p');
+      expect(text.classList.contains('completed')).toBeTruthy();
     });
   });
 });
