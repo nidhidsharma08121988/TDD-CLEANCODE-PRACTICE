@@ -40,10 +40,12 @@ describe('Todo item', () => {
 
   test('Must: Toggle state of completed on click', async () => {
     await waitFor(() => {
-      const taskText = screen.getByTestId('todo-text');
-      userEvent.click(taskText);
-      const text = taskText.find('p');
-      expect(text.classList.contains('completed')).toBeTruthy();
+      const arrayTaskText = screen.queryAllByTestId('todo-text');
+
+      arrayTaskText.forEach(taskText => {
+        const text = taskText.find('[data-testid="title"]');
+        expect(text.classList.contains('completed')).toBeTruthy();
+      });
     });
   });
 });
