@@ -5,17 +5,18 @@ import { connect } from 'react-redux';
 import { deleteTodoAction } from '../redux-store/actions/todoActions';
 
 const ToDoItem = props => {
-  const { item, toggleCompletedAction } = props;
+  const { item, toggleCompletedAction, deleteTodoAction } = props;
 
   const toggleCompletedState = () => item.id && toggleCompletedAction(item.id);
 
   return (
     <div
       data-testid='todo-text'
-      className={item.completed ? styles.completed : styles.todoText}
+      className={styles.todoText}
       onClick={toggleCompletedState}
     >
-      {item.title}
+      <p className={item.completed ? styles.completed : ''}>{item.title}</p>
+      <i className={styles.deleteIcon} >X</i>
     </div>
   );
 };

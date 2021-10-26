@@ -1,8 +1,19 @@
 .completed {
   text-decoration: line-through;
-  cursor: pointer;
+}
+
+.completed .deleteIcon {
+  color: grey;
+  text-decoration: none;
 }
 
 .todoText {
   cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.deleteIcon:hover {
+  color: maroon;
 }
