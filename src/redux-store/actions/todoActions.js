@@ -1,5 +1,18 @@
 import { getTodoListApi } from '../../network/todo_api_calls';
-import { ADD_TODO, GET_TODO_LIST, SHOW_ERROR, TOGGLE_COMPLETED } from './types';
+import {
+  ADD_TODO,
+  DELETE_TODO,
+  GET_TODO_LIST,
+  SHOW_ERROR,
+  TOGGLE_COMPLETED,
+} from './types';
+
+export const deleteTodoAction = id => dispatch => {
+  dispatch({
+    type: DELETE_TODO,
+    payload: id,
+  });
+};
 
 export const toggleCompletedAction = id => dispatch => {
   dispatch({
