@@ -7,18 +7,19 @@ import * as apiCalls from '../network/todo_api_calls';
 import App from '../App';
 import userEvent from '@testing-library/user-event';
 
+const todoList = [
+  {
+    id: 1,
+    userId: 1,
+    title: 'good',
+    completed: false,
+  },
+];
+
 describe('Todo item', () => {
   beforeEach(() => {
-    const todoList = [
-      {
-        id: 1,
-        userId: 1,
-        title: 'good',
-        completed: false,
-      },
-    ];
     const mockGetTodoList = jest.spyOn(apiCalls, 'getTodoListApi');
-    mockGetTodoList.mockImplementation(() => Promise.resolve(todoList));
+    mockGetTodoList.mockResolvedValueOnce(todoList);
 
     const initState = {
       todo_reducer: {
@@ -37,12 +38,17 @@ describe('Todo item', () => {
       </Provider>
     );
   });
-  test('Could be deleted', async () => {
+
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
+  test('Is deleted on click of delete button', async () => {
     await waitFor(() => {
       const deleteBtn = screen.getByTestId('delete-todo-btn');
       userEvent.click(deleteBtn);
 
-      expect(screen.getByText('good')).toBeFalsy();
+      expect(screen.queryByText('good')).toBeFalsy();
     });
   });
 });

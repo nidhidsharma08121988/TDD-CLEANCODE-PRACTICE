@@ -18,7 +18,7 @@ const withSingleTodo = [
 describe('when: To do list is not empty,', () => {
   beforeEach(() => {
     const mockgetTodoListApi = jest.spyOn(apiCalls, 'getTodoListApi');
-    mockgetTodoListApi.mockImplementation(() =>
+    mockgetTodoListApi.mockImplementationOnce(() =>
       Promise.resolve(withSingleTodo)
     );
     const initState = {

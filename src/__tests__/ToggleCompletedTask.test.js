@@ -19,7 +19,7 @@ const todoList = [
 describe('Todo item', () => {
   beforeEach(() => {
     const mockGetTodoApi = jest.spyOn(apiCalls, 'getTodoListApi');
-    mockGetTodoApi.mockImplementation(() => Promise.resolve(todoList));
+    mockGetTodoApi.mockImplementationOnce(() => Promise.resolve(todoList));
 
     const initState = {
       todo_reducer: { todos: [], newTodo: {}, showListError: false },
@@ -32,6 +32,10 @@ describe('Todo item', () => {
         <App />
       </Provider>
     );
+  });
+
+  afterEach(() => {
+    jest.resetAllMocks();
   });
 
   test('Must: Toggle state of completed on click', async () => {

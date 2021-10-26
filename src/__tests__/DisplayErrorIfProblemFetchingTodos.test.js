@@ -9,7 +9,7 @@ import App from '../App';
 describe('When: Error in fetching todos:', () => {
   beforeEach(() => {
     const mockGetTodoListApi = jest.spyOn(apiCalls, 'getTodoListApi');
-    mockGetTodoListApi.mockImplementation(() => {
+    mockGetTodoListApi.mockImplementationOnce(() => {
       throw new Error();
     });
 
@@ -25,6 +25,13 @@ describe('When: Error in fetching todos:', () => {
       </Provider>
     );
   });
+
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
+  
+
   test('Then: Display error Something went Wrong', () => {
     expect(screen.queryByTestId('display-error')).toBeVisible();
   });

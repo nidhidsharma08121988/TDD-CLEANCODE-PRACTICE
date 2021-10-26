@@ -5,9 +5,22 @@ import App from '../App';
 import rootReducer from '../redux-store/reducers';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
+import * as apiCalls from '../network/todo_api_calls';
+
+const todoList = [
+  {
+    id: 1,
+    userId: 1,
+    title: 'good',
+    completed: false,
+  },
+];
 
 describe('Add new todo Item:', () => {
   beforeEach(() => {
+    const mockGetTodoList = jest.spyOn(apiCalls, 'getTodoListApi');
+    mockGetTodoList.mockResolvedValueOnce(todoList);
+
     const initState = {};
     const store = createStore(rootReducer, initState, applyMiddleware(thunk));
     render(
@@ -15,6 +28,10 @@ describe('Add new todo Item:', () => {
         <App />
       </Provider>
     );
+  });
+
+  afterEach(() => {
+    jest.resetAllMocks();
   });
 
   test('Must display: Textarea to enter new todo item', () => {
@@ -43,8 +60,7 @@ describe('Add new todo Item:', () => {
     submitBtn.click();
 
     await waitFor(() => {
-      const arrayOfTodoItems = screen.queryAllByTestId('todo-item');
-      expect(arrayOfTodoItems[0].textContent).toBe('Bye');
+      expect(screen.queryByText('Bye')).toBeTruthy();
     });
   });
 });

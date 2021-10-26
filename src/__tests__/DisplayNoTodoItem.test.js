@@ -10,7 +10,7 @@ describe('when: To Do list is empty', () => {
   beforeEach(() => {
     const mockgetTodoListApi = jest.spyOn(apiCalls, 'getTodoListApi');
 
-    mockgetTodoListApi.mockImplementation(() => Promise.resolve([]));
+    mockgetTodoListApi.mockImplementationOnce(() => Promise.resolve([]));
 
     const initState = {
       todo_reducer: {
