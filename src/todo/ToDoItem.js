@@ -22,6 +22,7 @@ const ToDoItem = props => {
         className={styles.deleteBtn}
         data-testid='delete-todo-btn'
         onClick={() => item.id && deleteTodoAction(item.id)}
+        aria-label='delete button'
       >
         x
       </button>
