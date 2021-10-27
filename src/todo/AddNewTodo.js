@@ -40,6 +40,7 @@ const AddNewTodo = props => {
       data-testid='submit-new-todo'
       className={styles.submitBtn}
       onClick={handleSubmit}
+      aria-label='add new item'
     >
       <i className='fas fa-plus'></i>
     </button>
